@@ -18,7 +18,8 @@ public class Cartesian_CoordinateSystem {
         else if(y == 0) System.out.println("x-axis");
         else if(x > 0 && y > 0) System.out.println("1st Quadrant");
         else if(x < 0 && y > 0) System.out.println("2nd Quadrant");
-        else if(x < 0) System.out.println("3rd Quadrant");
+        else if(x < 0) System.out.println("3rd Quadrant");   // (y>0) is already checked above
         else System.out.println("4th Quadrant");
     }
 }
+
