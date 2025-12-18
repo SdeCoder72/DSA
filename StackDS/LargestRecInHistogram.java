@@ -3,7 +3,9 @@ package StackDS;
 import java.util.Arrays;
 import java.util.Stack;
 
+// three pass solution
 public class LargestRecInHistogram {
+    // function for finding the next smallest element
     public static int[] rightSmallerNearest(int[] arr, int n){
         Stack<Integer> st = new Stack<>();
         int[] ans = new int[n];
@@ -16,6 +18,7 @@ public class LargestRecInHistogram {
         }
         return ans;
     }
+    // function for finding previous smallest element
     public static int[] leftSmallerNearest(int[] arr, int n) {
         Stack<Integer> st = new Stack<>();
         int[] ans = new int[n];
@@ -28,6 +31,7 @@ public class LargestRecInHistogram {
         }
         return ans;
     }
+    // Calculating the max area of rectangle
     public static int largestRectangleArea(int[] arr) {
         int n = arr.length;
         int[] right = rightSmallerNearest(arr, n);
@@ -50,3 +54,31 @@ public class LargestRecInHistogram {
         System.out.println(largestRectangleArea(arr));
     }
 }
+
+// One pass solution
+class Solution {
+    public int largestRectangleArea(int[] arr) {
+        int n = arr.length;
+        int ans = 0;
+        Stack<Integer> st = new Stack<>();
+        for(int i = 0; i<n; i++) {
+            while(!st.isEmpty() && arr[i] < arr[st.peek()]){
+                int h = arr[st.pop()];
+                if(!st.isEmpty()) {
+                    ans = Math.max(ans, h * (i - st.peek() - 1));
+                }
+                else ans = Math.max(ans, h * i);
+            }
+            st.push(i);
+        }
+        while(!st.isEmpty()) {
+            int h = arr[st.pop()];
+            if(!st.isEmpty()) {
+                ans = Math.max(ans, h * (n-st.peek() - 1));
+            }
+            else ans = Math.max(ans, h * n);
+        }
+        return ans;
+    }
+}
+
