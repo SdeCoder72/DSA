@@ -1,4 +1,4 @@
-
+// BFS
 class Solution {
     public List<Integer> rightSideView(TreeNode root) {
         List<Integer> ans = new ArrayList<>();
@@ -15,5 +15,22 @@ class Solution {
             }
         }
         return ans;
+    }
+}
+
+// DFS
+
+class Solution {
+    void dfs(TreeNode root, List<Integer> ans, int lvl) {
+        if(root == null) return ;
+        if(ans.size() < lvl) ans.add(root.val);
+        dfs(root.left, ans, lvl+1);
+        dfs(root.right, ans, lvl+1);
+    }
+    public List<Integer> rightSideView(TreeNode root) {
+        List<Integer> ans = new ArrayList<>();
+        dfs(root, ans, 1);
+        return ans;
+        
     }
 }
