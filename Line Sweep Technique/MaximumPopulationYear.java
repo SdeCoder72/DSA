@@ -1,5 +1,7 @@
 
-// 1. Difference Array Technique(DAT)
+// Approach-1. Difference Array Technique(DAT)
+//T.C : O(n)
+//S.C : O(max year) diffArr size
 class Solution {
     public int maximumPopulation(int[][] logs) {
         int[] diffArr = new int[2051];
