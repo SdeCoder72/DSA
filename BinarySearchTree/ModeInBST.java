@@ -33,3 +33,34 @@ class Solution {
 // Time Complexity - O(n)
 // Space Complexity - O(1)
 
+class Solution {
+    private int currNum = 0;
+    private int currFreq = 0;
+    private int maxFreq = 0;
+    private ArrayList<Integer> ans = new ArrayList<>();
+    void dfs(TreeNode root){
+        if(root == null) return;
+        dfs(root.left);
+
+        if(root.val == currNum){
+            currFreq++;
+        }
+        else {
+            currNum = root.val;
+            currFreq = 1;
+        }
+        if(currFreq > maxFreq){
+            maxFreq = currFreq;
+            ans.clear();
+            ans.add(root.val);
+        }
+        else if(currFreq == maxFreq){
+            ans.add(root.val);
+        }
+        dfs(root.right);
+    }
+    public int[] findMode(TreeNode root) {
+        dfs(root);
+        return ans.stream().mapToInt(i -> i).toArray();
+    }
+}
