@@ -3,8 +3,8 @@
 // Time Complexity - O(n)
 // Space Complexity - O(n)
 class Solution {
-    public Map<Integer, Integer> events = new TreeMap<>();
     public boolean carPooling(int[][] trips, int capacity) {
+        Map<Integer, Integer> events = new TreeMap<>();
         for(int[] trip : trips){
             int delta = trip[0];
             events.put(trip[1], events.getOrDefault(trip[1], 0)+ delta);
