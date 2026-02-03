@@ -28,3 +28,33 @@ public class MissingNumber {
         return (int)(sum-arrSum);
     }
 }
+
+// Missing number (leetCode)
+// Brute force 
+class Solution {
+    public int missingNumber(int[] nums) {
+        Arrays.sort(nums);
+        for(int i = 0; i < nums.length-1; i++){
+            if(nums[i+1] - nums[i] != 1) return nums[i] +1;
+        }
+        if(nums[0] <= 0) return nums.length;
+        return nums[0]-1;
+    }
+}
+
+// Optimization 
+class Solution {
+    public int missingNumber(int[] nums) {
+        int excsum=0;
+        for (int i =0;i<=nums.length;i++){
+            excsum+=i;
+        }
+        int acsum=0;
+        for(int i=0; i<nums.length;i++){
+            acsum+=nums[i];
+        }
+        return excsum-acsum;
+        
+    }
+            }
+
