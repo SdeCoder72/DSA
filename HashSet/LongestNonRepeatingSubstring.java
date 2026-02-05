@@ -3,7 +3,7 @@ class Solution {
     int longestUniqueSubstring(String s) {
         // code here
         HashSet<Character> set = new HashSet<>();
-        int i = 0, j= 0, maxLen = 1;
+        int i = 0, j= 0, maxLen = 0;
         while(j < s.length()){
             char ch = s.charAt(j);
             if(!set.contains(ch)){
