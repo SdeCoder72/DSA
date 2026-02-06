@@ -1,3 +1,6 @@
+// Time Complexity - O(n log n + 2n) = O(n log n)
+// Space Complexity - O(1)
+
 class Solution {
     public int minRemoval(int[] nums, int k) {
         Arrays.sort(nums);
