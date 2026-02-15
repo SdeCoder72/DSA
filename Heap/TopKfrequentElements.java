@@ -13,12 +13,12 @@ class Pair implements Comparable<Pair>{
 }
 class Solution {
     public int[] topKFrequent(int[] nums, int k) {
-        HashMap<Integer, Integer> map = new HashMap<>();
-        for(int ele : nums) {
+        HashMap<Integer, Integer> map = new HashMap<>(); // S.C - O(n)
+        for(int ele : nums) {  // T.C - O(n)
             map.put(ele, map.getOrDefault(ele, 0) + 1);
         }
-        PriorityQueue<Pair> pq = new PriorityQueue<>();
-        for(int val : map.keySet()){
+        PriorityQueue<Pair> pq = new PriorityQueue<>(); // S.C - O(k)
+        for(int val : map.keySet()){  // T.C - O(n log k)
             int freq = map.get(val);
             pq.add(new Pair(val, freq));
             if(pq.size() > k) pq.remove();
@@ -31,4 +31,4 @@ class Solution {
         }
         return ans;
     }
-              }
+}
