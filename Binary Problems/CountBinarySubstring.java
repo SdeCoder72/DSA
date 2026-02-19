@@ -1,5 +1,5 @@
 // Time Complexity - O(n)
-Auxiliary Space - O(1)
+// Auxiliary Space - O(1)
 
 class Solution {
     public int countBinarySubstrings(String s) {
