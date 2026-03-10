@@ -1,5 +1,5 @@
 // Approach 1 (Recursive)
-// Time Complexity - O(O * Z * K), where O is the initial count of ones and Z is the initial count of zeros
+// Time Complexity - O(O * Z * limit), where O is the initial count of ones and Z is the initial count of zeros
 // Space Complexity - O(O * Z)
 class Solution {
     int M = 1000000007;
@@ -35,7 +35,7 @@ class Solution {
 }
 
 // Approach 1 (DP)
-// Time Complexity - O(O * Z * K), where O is the initial count of ones and Z is the initial count of zeros
+// Time Complexity - O(O * Z * limit), where O is the initial count of ones and Z is the initial count of zeros
 // Space Complexity - O(O * Z)
 class Solution {
     int[][][] t;
