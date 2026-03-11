@@ -14,3 +14,38 @@ class Solution {
         return sum;
     }
 }
+
+// Approach 2 (Iterative Bitmask Building)
+// Time Complexity - O(log n)
+// Space Complexity - O(1)
+class Solution {
+    public int bitwiseComplement(int n) {
+        int mask = 1;
+        while(mask < n) 
+            mask = (big << 1) | 1;
+        
+        return mask ^ n;
+    }
+}
+
+// Approach 3 (Logarithmic Mask Calculation)
+// Time Complexity - O(log n)
+// Space Complexity - O(1)
+class Solution {
+    public int bitwiseComplement(int n) {
+        int bit = (int)(Math.log(n) / Math.log(2)) + 1;
+        int mask = (1 << bit) - 1;
+        return mask ^ n;
+    }
+}
+
+// Approach 4 (Follow up of approach 3)
+// Time Complexity - O(log n)
+// Space Complexity - O(1)
+class Solution {
+    public int bitwiseComplement(int n) {
+        int bit = (n==0) ? 1 : 32 - Integer.numberOfLeadingZeros(n);
+        int mask = (1 << bit) - 1;
+        return mask ^ n;
+    }
+}
