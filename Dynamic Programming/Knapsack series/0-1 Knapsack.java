@@ -1,6 +1,6 @@
 // Approach - 01 Recursion + memoization) from i to n-1
-// Time complexity - O(n²)
-// Space complexity - O(n²)
+// Time complexity - O(n * W)
+// Space complexity - O(n * W)
 
 class Solution {
     int n;
@@ -26,8 +26,8 @@ class Solution {
 }
 
 // Approach - 02 Recursion + memoization) from n-1 to 0
-// Time complexity - O(n²)
-// Space complexity - O(n²)
+// Time complexity - O(n * W)
+// Space complexity - O(n * W)
 
 class Solution {
     int n;
