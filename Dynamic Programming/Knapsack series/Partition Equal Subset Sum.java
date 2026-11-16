@@ -27,9 +27,9 @@ class Solution {
     }
 }
 
-// Approach - 01 (Bottom-up)
-// Time complexity - O(n * sum)
-// Space complexity - O(n * sum)
+// Approach - 02 (Bottom-up)
+// Time complexity - O(n * s)
+// Space complexity - O(n * s)
 
 class Solution {
     public boolean canPartition(int[] nums) {
@@ -56,5 +56,38 @@ class Solution {
             }
         }
         return t[n][s];
+    }
+}
+
+// Approach - 03 (Bottom-up + Space optimise)
+// Time complexity - O(n * s)
+// Space complexity - O(2s + 2)
+
+class Solution {
+    public boolean canPartition(int[] nums) {
+        int n  = nums.length;
+        int sum = 0;
+        for(int num : nums){
+            sum += num;
+        }
+        if(sum % 2 != 0) return false;
+        int s = sum/2;
+        boolean[] prev = new boolean[s+1];
+        boolean[] curr = new boolean[s+1];
+        prev[0] = true;
+        curr[0] = true;
+
+        for(int i = 1; i <= n; i++) {
+            for(int j = 1; j <= s; j++) {
+                boolean skip = prev[j];
+                boolean take = false;
+                if(nums[i-1] <= j){
+                    take = prev[j - nums[i-1]];
+                }
+                curr[j] = take || skip;
+            }
+            prev = curr.clone();
+        }
+        return prev[s];
     }
 }
