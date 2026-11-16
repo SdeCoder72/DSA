@@ -26,3 +26,35 @@ class Solution {
         return solve(n, sum/2, nums);
     }
 }
+
+// Approach - 01 (Bottom-up)
+// Time complexity - O(n * sum)
+// Space complexity - O(n * sum)
+
+class Solution {
+    public boolean canPartition(int[] nums) {
+        int n  = nums.length;
+        int sum = 0;
+        for(int num : nums){
+            sum += num;
+        }
+        if(sum % 2 != 0) return false;
+        int s = sum/2;
+        boolean[][] t = new boolean[n+1][s + 1];
+        for(int i = 0; i <= n; i++){
+            t[i][0] = true;
+        }
+
+        for(int i = 1; i <= n; i++) {
+            for(int j = 1; j <= s; j++) {
+                boolean skip = t[i-1][j];
+                boolean take = false;
+                if(nums[i-1] <= j){
+                    take = t[i-1][j - nums[i-1]];
+                }
+                t[i][j] = take || skip;
+            }
+        }
+        return t[n][s];
+    }
+}
