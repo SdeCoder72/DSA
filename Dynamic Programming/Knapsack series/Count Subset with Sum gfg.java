@@ -51,3 +51,30 @@ class Solution {
         return t[n][target];
     }
 }
+
+// Approach - 03 (Bottom-up + Space optimised)
+// Time complexity - O(n*target)
+// Space complexity - O(target)
+
+class Solution {
+    static int perfectSum(int[] arr, int target) {
+        // code here
+        int n = arr.length;
+        int[] curr = new int[target+1];
+        int[] prev = new int[target+1];
+        prev[0] = 1;
+        for(int i = 1; i <= n; i++){
+            for(int j = 0; j <= target; j++) {
+                int skip = prev[j];
+                int take = 0; 
+                if(arr[i-1] <= j) {
+                    take = prev[j - arr[i-1]];
+                }
+                
+                curr[j] = take + skip;
+            }
+            prev = curr.clone();
+        }
+        return prev[target];
+    }
+}
