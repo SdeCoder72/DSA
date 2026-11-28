@@ -1,3 +1,6 @@
+// Time complexity - O(V+E)  V = vertices, E = edges
+// Space complexity - O(V)
+
 import java.util.*;
 class Main {
     private static void dfs(int u, Map<Integer, List<Integer>> adj, List<Integer> result, boolean[] visited) {
